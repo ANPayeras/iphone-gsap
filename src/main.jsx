@@ -6,7 +6,7 @@ import './index.css'
 import * as Sentry from "@sentry/react";
 
 Sentry.init({
-  dsn: "https://0db74ef08870d12bacfc65381aeb43d4@o4507437312966656.ingest.us.sentry.io/4507437318471680",
+  dsn: import.meta.env.VITE_SENTRY_DNS,
   integrations: [
     Sentry.browserTracingIntegration(),
     Sentry.metrics.metricsAggregatorIntegration(),
