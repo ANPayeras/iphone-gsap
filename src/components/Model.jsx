@@ -18,30 +18,25 @@ const Model = () => {
     img: yellowImg,
   })
 
-  // camera control for the model view
   const cameraControlSmall = useRef();
   const cameraControlLarge = useRef();
 
-  // model
   const small = useRef(new THREE.Group());
   const large = useRef(new THREE.Group());
 
-  // rotation
   const [smallRotation, setSmallRotation] = useState(0);
   const [largeRotation, setLargeRotation] = useState(0);
 
-  const tl = gsap.timeline();
-
   useEffect(() => {
-    if(size === 'large') {
-      animateWithGsapTimeline(tl, small, smallRotation, '#view1', '#view2', {
+    if (size === 'large') {
+      animateWithGsapTimeline(small, smallRotation, '#view1', '#view2', {
         transform: 'translateX(-100%)',
         duration: 2
       })
     }
 
-    if(size ==='small') {
-      animateWithGsapTimeline(tl, large, largeRotation, '#view2', '#view1', {
+    if (size === 'small') {
+      animateWithGsapTimeline(large, largeRotation, '#view2', '#view1', {
         transform: 'translateX(0)',
         duration: 2
       })
@@ -61,7 +56,7 @@ const Model = () => {
 
         <div className="flex flex-col items-center mt-5">
           <div className="w-full h-[75vh] md:h-[90vh] overflow-hidden relative">
-            <ModelView 
+            <ModelView
               index={1}
               groupRef={small}
               gsapType="view1"
@@ -69,9 +64,9 @@ const Model = () => {
               setRotationState={setSmallRotation}
               item={model}
               size={size}
-            />  
+            />
 
-            <ModelView 
+            <ModelView
               index={2}
               groupRef={large}
               gsapType="view2"
@@ -109,7 +104,7 @@ const Model = () => {
 
               <button className="size-btn-container">
                 {sizes.map(({ label, value }) => (
-                  <span key={label} className="size-btn" style={{ backgroundColor: size === value ? 'white' : 'transparent', color: size === value ? 'black' : 'white'}} onClick={() => setSize(value)}>
+                  <span key={label} className="size-btn" style={{ backgroundColor: size === value ? 'white' : 'transparent', color: size === value ? 'black' : 'white' }} onClick={() => setSize(value)}>
                     {label}
                   </span>
                 ))}

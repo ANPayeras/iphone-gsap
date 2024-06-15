@@ -7,7 +7,7 @@ const Hero = () => {
   const [videoSrc, setVideoSrc] = useState(window.innerWidth < 760 ? smallHeroVideo : heroVideo)
 
   const handleVideoSrcSet = () => {
-    if(window.innerWidth < 760) {
+    if (window.innerWidth < 760) {
       setVideoSrc(smallHeroVideo)
     } else {
       setVideoSrc(heroVideo)

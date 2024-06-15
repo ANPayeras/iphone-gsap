@@ -15,14 +15,15 @@ export const animateWithGsap = (target, animationProps, scrollProps) => {
   })
 }
 
-export const animateWithGsapTimeline = (timeline, rotationRef, rotationState, firstTarget, secondTarget, animationProps) => {
-  timeline.to(rotationRef.current.rotation, {
+export const animateWithGsapTimeline = (rotationRef, rotationState, firstTarget, secondTarget, animationProps) => {
+  const tl = gsap.timeline();
+  tl.to(rotationRef.current.rotation, {
     y: rotationState,
     duration: 1,
     ease: 'power2.inOut'
   })
 
-  timeline.to(
+  tl.to(
     firstTarget,
     {
       ...animationProps,
@@ -31,7 +32,7 @@ export const animateWithGsapTimeline = (timeline, rotationRef, rotationState, fi
     '<'
   )
 
-  timeline.to(
+  tl.to(
     secondTarget,
     {
       ...animationProps,
