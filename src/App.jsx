@@ -7,8 +7,15 @@ import HowItWorks from './components/HowItWorks';
 import Footer from './components/Footer';
 
 import * as Sentry from '@sentry/react';
+import { useEffect } from 'react';
 
 const App = () => {
+  useEffect(() => {
+    const interval = setInterval(() => {
+      document.getElementById('root').style.touchAction = 'auto'
+      clearInterval(interval)
+    }, 1000)
+  }, [])
   return (
     <main className="bg-black">
       <Navbar />
