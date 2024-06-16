@@ -49,13 +49,13 @@ const Model = () => {
 
 
   useGSAP(() => {
-    var tl = gsap.timeline({
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: '#sectionModels',
         start: 'top top',
         end: 'top top',
         scrub: 5,
-        markers: true,
+        // markers: true,
         once: true,
       },
     });
