@@ -11,6 +11,7 @@ import { models, sizes } from "../constants";
 import { animateWithGsapTimeline } from "../utils/animations";
 
 const Model = () => {
+  const [userGrabbing, setUserGrabbing] = useState(false);
   const [size, setSize] = useState('small');
   const [model, setModel] = useState({
     title: 'iPhone 15 Pro in Natural Titanium',
@@ -30,7 +31,7 @@ const Model = () => {
   useEffect(() => {
     if (size === 'large') {
       animateWithGsapTimeline(small, smallRotation, '#view1', '#view2', {
-        transform: 'translateX(-100%)',
+        transform: 'translateX(-125%)',
         duration: 2
       })
     }
@@ -64,7 +65,7 @@ const Model = () => {
     tl.to(small.current.rotation, { y: 0, })
   }, []);
 
-  return (
+    return (
     <section className="common-padding" id="sectionModels">
       <div className="screen-max-width">
         <h1 id="heading" className="section-heading">
@@ -72,7 +73,10 @@ const Model = () => {
         </h1>
 
         <div className="flex flex-col items-center mt-5">
-          <div className="w-full h-[75vh] md:h-[90vh] overflow-hidden relative cursor-grab">
+          <div
+            onMouseDown={() => setUserGrabbing(!userGrabbing)}
+            onMouseUp={() => setUserGrabbing(!userGrabbing)}
+            className={`w-[70%] xl:w-full h-[75vh] md:h-[90vh] overflow-hidden relative cursor-${userGrabbing ? 'grabbing' : 'grab'}`}>
             <ModelView
               index={1}
               groupRef={small}
